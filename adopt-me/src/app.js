@@ -8,6 +8,8 @@ const Pet = (props) => {
 }
 
 // App is a React component. It's like a rubber stamp (something that can be re-used). It is critical that we capitalise the name of our components.
+
+// Data flows down! So I can pass properties from the App component to the Pet component, but not the other way around. ONE WAY DATA FLOW Parent > Child.
 const App = () => {
   return React.createElement(
     "div",
