@@ -1,3 +1,4 @@
+// FYI I've downloaded prettier locally, and it works, but as soon as I enable the VS Code extension, it stops working and I don't know why 🤷‍♀️
 // props aka properties, allows our React components to be more flexible!
 const Pet = (props) => {
   return React.createElement("div", {}, [
