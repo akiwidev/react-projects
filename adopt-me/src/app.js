@@ -1,14 +1,8 @@
-/* global React ReactDOM */
+import React from "react";
+import ReactDOM from "react-dom";
+import Pet from "./Pet";
 
 // FYI I've downloaded prettier locally, and it works, but as soon as I enable the VS Code extension, it stops working and I don't know why 🤷‍♀️
-// props aka properties, allows our React components to be more flexible!
-const Pet = (props) => {
-  return React.createElement("div", {}, [
-    React.createElement("h2", {}, props.name),
-    React.createElement("h3", {}, props.animal),
-    React.createElement("h3", {}, props.breed),
-  ]);
-};
 
 // App is a React component. It's like a rubber stamp (something that can be re-used). It is critical that we capitalise the name of our components.
 
