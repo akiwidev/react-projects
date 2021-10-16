@@ -1,5 +1,5 @@
 import ReactDOM from "react-dom";
-import Pet from "./Pet";
+import SearchParams from "./SearchParams";
 
 // FYI I've downloaded prettier locally, and it works, but as soon as I enable the VS Code extension, it stops working and I don't know why 🤷‍♀️
 
@@ -34,9 +34,7 @@ const App = () => {
     <div>
       <h1>Adopt Me!</h1>
       {/*Below is how we pass props to our component in JSX*/}
-      <Pet name="Honey" animal="Dog" breed="Poodle" />
-      <Pet name="IB" animal="Bird" breed="Budgie" />
-      <Pet name="Sora-Momo" animal="Cat" breed="Blue Persian" />
+      <SearchParams />
     </div>
   );
 }
