@@ -8,9 +8,11 @@ const ANIMALS = ["bird", "cat", "dog", "reptile", "fish", "kangaroo"]
 const SearchParams = () => {
   {/* 95% of the time your hooks are going to be written here, at the top of your component. */ }
 
-  {/* With destructuriing */ }
+  {/* With destructuring */ }
   const [location, setLocation] = useState("Te Awamutu");
-  const [animal, updateAnimal] = useState("");
+  const [animal, setAnimal] = useState("");
+  const [breed, setBreed] = useState("");
+  const breeds = [];
 
   {/* Without destructuring */ }
   // const locationTuple = useState("Te Awamutu");
@@ -31,13 +33,28 @@ const SearchParams = () => {
           <select
             id="animal"
             value={animal}
-            onChange={e => updateAnimal(e.target.value)}
-            onBlur={e => updateAnimal(e.target.value)}
+            onChange={e => setAnimal(e.target.value)}
+            onBlur={e => setAnimal(e.target.value)}
           >
             <option />
             {ANIMALS.map(animal => (
               <option value={animal} key={animal}>
                 {animal}
+              </option>
+            ))}
+          </select>
+        </label>
+        <label htmlFor="breed">Breed
+          <select
+            id="breed"
+            value={breed}
+            onChange={e => setBreed(e.target.value)}
+            onBlur={e => setBreed(e.target.value)}
+          >
+            <option />
+            {breeds.map(breed => (
+              <option value={breed} key={breed}>
+                {breed}
               </option>
             ))}
           </select>
