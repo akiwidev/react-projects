@@ -1,23 +1,47 @@
 // Hooks always begin with 'use..' and track the state of something. Whenever some kind of input changes, React kicks off a re-render cycle, and it's gonna call the hooks.
 // Never put hooks inside of for loops or if statements!
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import Pet from './Pet'
 
 const ANIMALS = ["bird", "cat", "dog", "reptile", "fish", "kangaroo"]
 
 const SearchParams = () => {
   {/* 95% of the time your hooks are going to be written here, at the top of your component. */ }
 
-  {/* With destructuring */ }
-  const [location, setLocation] = useState("Te Awamutu");
+  {/* Hooks with destructuring */ }
+  const [location, setLocation] = useState("Seattle, WA");
   const [animal, setAnimal] = useState("");
   const [breed, setBreed] = useState("");
+  const [pets, setPets] = useState([]);
   const breeds = [];
 
-  {/* Without destructuring */ }
+  {/* Hooks without destructuring */ }
   // const locationTuple = useState("Te Awamutu");
   // const location = locationTuple[0];
   // const setLocation = locationTuple[1];
+
+  useEffect(() => {
+    requestPets();
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  // adding the sqaure brackets here ☝️ to make sure the api runs only once. If we don't have them, every time a hook is updated (re-rendered), then the api will run and we can enter an infinite loop. By adding a value inside the square brackets, we're defining when we want to call the api (i.e. every time animal is updated).
+
+  // useEffect(() => {
+  //   const timer = setTimeout(() => alert('hi'), 3000);
+
+  //   {* clearing out (aka cleaning up after oneself) to prevent memory leaks.👇 *}
+  //   {* useful when using timers, subscriptions etc. *}
+  //   return () => clearTimeout(timer);
+  // }, [animal]);
+
+  async function requestPets() {
+    const response = await fetch(
+      `http://pets-v2.dev-apis.com/pets?animal=${animal}&location=${location}&breed=${breed}`
+    )
+    const json = await response.json();
+
+    setPets(json.pets);
+  }
 
   return (
     <div className="search-params">
@@ -61,6 +85,13 @@ const SearchParams = () => {
         </label>
         <button>Submit</button>
       </form>
+      {pets.map(pet => (
+        <Pet
+          name={pet.name}
+          animal={pet.animal}
+          breed={pet.breed}
+          key={pet.id} />
+      ))}
     </div>
   )
 }
