@@ -1,5 +1,6 @@
 import ReactDOM from "react-dom";
 import SearchParams from "./SearchParams";
+import { StrictMode } from "react";
 
 // FYI I've downloaded prettier locally, and it works, but as soon as I enable the VS Code extension, it stops working and I don't know why 🤷‍♀️
 
@@ -39,4 +40,9 @@ const App = () => {
   );
 }
 
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(
+  <StrictMode>
+    <App />
+  </StrictMode>,
+  document.getElementById("root")
+);
