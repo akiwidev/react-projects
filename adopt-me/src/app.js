@@ -1,6 +1,8 @@
-import ReactDOM from "react-dom";
-import SearchParams from "./SearchParams";
 import { StrictMode } from "react";
+import ReactDOM from "react-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import SearchParams from "./SearchParams";
+import Details from "./Details";
 
 // FYI I've downloaded prettier locally, and it works, but as soon as I enable the VS Code extension, it stops working and I don't know why 🤷‍♀️
 
@@ -34,8 +36,16 @@ const App = () => {
   return (
     <div>
       <h1>Adopt Me!</h1>
-      {/*Below is how we pass props to our component in JSX*/}
-      <SearchParams />
+      <Router>
+        <Switch>
+          <Route path="/details/:id">
+            <Details />
+          </Route>
+          <Route path="/">
+            <SearchParams />
+          </Route>
+        </Switch>
+      </Router>
     </div>
   );
 }
