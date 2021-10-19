@@ -34,8 +34,7 @@ import ThemeContext from "./ThemeContext";
 
 // re-writing the above code in JSX format (so much more readable!!)
 const App = () => {
-  const themeHook = useState("darkpurple");
-
+  const theme = useState("purple");
   return (
     <ThemeContext.Provider value={theme}>
       <div>
