@@ -1,8 +1,9 @@
-import { StrictMode } from "react";
+import { StrictMode, useState } from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import SearchParams from "./SearchParams";
 import Details from "./Details";
+import ThemeContext from "./ThemeContext";
 
 // FYI I've downloaded prettier locally, and it works, but as soon as I enable the VS Code extension, it stops working and I don't know why 🤷‍♀️
 
@@ -33,24 +34,28 @@ import Details from "./Details";
 
 // re-writing the above code in JSX format (so much more readable!!)
 const App = () => {
+  const themeHook = useState("darkpurple");
+
   return (
-    <div>
-      <Router>
-        <header>
-          <Link to="/">
-            <h1>Adopt Me!</h1>
-          </Link>
-        </header>
-        <Switch>
-          <Route path="/details/:id">
-            <Details />
-          </Route>
-          <Route path="/">
-            <SearchParams />
-          </Route>
-        </Switch>
-      </Router>
-    </div>
+    <ThemeContext.Provider value={theme}>
+      <div>
+        <Router>
+          <header>
+            <Link to="/">
+              <h1>Adopt Me!</h1>
+            </Link>
+          </header>
+          <Switch>
+            <Route path="/details/:id">
+              <Details />
+            </Route>
+            <Route path="/">
+              <SearchParams />
+            </Route>
+          </Switch>
+        </Router>
+      </div>
+    </ThemeContext.Provider>
   );
 }
 
