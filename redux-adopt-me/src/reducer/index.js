@@ -6,4 +6,7 @@ import theme from "./theme";
 
 export default combineReducers({
   location,
+  breed,
+  animal,
+  theme,
 });
