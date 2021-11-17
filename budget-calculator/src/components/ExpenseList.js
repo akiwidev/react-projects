@@ -1,12 +1,21 @@
 import React from 'react';
 import Item from './ExpenseItem';
+import { FcEmptyTrash } from "react-icons/fc";
 
-const ExpenseList = () => {
+const ExpenseList = ({expenses}) => {
   return (
-    <div>
-      Hello from expense list
-      <Item/>
-    </div>
+    <>
+      <ul className="list">
+        {expenses.map((expense) => {
+          return <Item key={expense.id} expense={expense} />
+        })
+      }
+      </ul>
+      {expenses.length > 0 && (
+        <button className='btn'>Clear expenses <FcEmptyTrash className='btn-icon' />
+        </button>
+      )}
+    </>
   )
 }
 
