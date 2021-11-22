@@ -22,15 +22,21 @@ function App() {
 
   // *********************** functionality *******************//
   const handleCharge = e => {
-    console.log(`charge: ${e.target.value}`)
     setCharge(e.target.value)
   }
   const handleAmount = e => {
-    console.log(`amount: ${e.target.value}`)
     setAmount(e.target.value)
   }
   const handleSubmit = e => {
     e.preventDefault();
+    if(charge !== '' && amount > 0){
+      const singleExpense = {id:uuid(), charge, amount};
+      setExpenses([...expenses, singleExpense]);
+      setCharge('');
+      setAmount('');
+    } else {
+      // handle alert
+    }
   }
 
   return (
@@ -48,7 +54,7 @@ function App() {
       </main>
       <h1>
         Total Spending: <span className='total'>$ {expenses.reduce((accumulator, current) => {
-          return (accumulator += current.amount);
+          return (accumulator += parseInt(current.amount));
         }, 0)}</span>
       </h1>
     </>
