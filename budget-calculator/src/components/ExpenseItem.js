@@ -11,7 +11,7 @@ const ExpenseItem = ({expense}) => {
       </div>
       <div>
         <button className="edit-btn" aria-label="edit button"><MdEdit /></button>
-        <button className="delete-btn" aria-label="delete button"><MdDelete /></button>
+        <button className="clear-btn" aria-label="delete button"><MdDelete /></button>
       </div>
     </li>
   )
