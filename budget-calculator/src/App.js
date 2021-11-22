@@ -22,13 +22,15 @@ function App() {
 
   // *********************** functionality *******************//
   const handleCharge = e => {
+    console.log(`charge: ${e.target.value}`)
     setCharge(e.target.value)
   }
   const handleAmount = e => {
+    console.log(`amount: ${e.target.value}`)
     setAmount(e.target.value)
   }
   const handleSubmit = e => {
-    e.preventDefault()
+    e.preventDefault();
   }
 
   return (
@@ -36,7 +38,12 @@ function App() {
       <Alert />
       <h1>Budget Calculator</h1>
       <main className='App'>
-        <ExpenseForm />
+        <ExpenseForm
+          charge={charge}
+          amount ={amount}
+          handleAmount={handleAmount}
+          handleCharge={handleCharge}
+          handleSubmit={handleSubmit} />
         <ExpenseList expenses={expenses}/>
       </main>
       <h1>
