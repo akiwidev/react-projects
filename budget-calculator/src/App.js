@@ -21,13 +21,24 @@ function App() {
   const [amount, setAmount] = useState('');
   // alert
   const [alert, setAlert] = useState({show:false});
+
   // *********************** functionality *******************//
+  // handle charge function
   const handleCharge = e => {
     setCharge(e.target.value)
   }
+  //handle amount function
   const handleAmount = e => {
     setAmount(e.target.value)
   }
+  // handle alert function
+  const handleAlert = ({type, text}) => {
+    setAlert({show:true, type, text});
+    setTimeout(() => {
+      setAlert({show:false});
+    }, 3000);
+  }
+  // handle submit function
   const handleSubmit = e => {
     e.preventDefault();
     if(charge !== '' && amount > 0){
