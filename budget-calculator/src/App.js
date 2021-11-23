@@ -46,8 +46,9 @@ function App() {
       setExpenses([...expenses, singleExpense]);
       setCharge('');
       setAmount('');
+      handleAlert({type:'success', text:'item added to list'});
     } else {
-      // handle alert
+      handleAlert({type:'danger', text: `charge can't be an empty value, and the amount must be greater than zero.`})
     }
   }
 
