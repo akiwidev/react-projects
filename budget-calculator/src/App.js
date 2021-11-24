@@ -50,7 +50,22 @@ function App() {
     } else {
       handleAlert({type:'danger', text: `charge can't be an empty value, and the amount must be greater than zero.`})
     }
-  }
+  };
+
+  // clear all items
+   const clearItems = () => {
+     console.log('cleared all items');
+   }
+
+   // handle delete
+   const handleDelete = (id) => {
+    console.log(`item deleted: ${id}`);
+   }
+
+   // handle edit
+   const handleEdit = (id) => {
+    console.log(`item updated: ${id}`);
+   }
 
   return (
     <>
