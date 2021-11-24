@@ -30,7 +30,6 @@ function App() {
 
   // *********************** useEffect *******************//
   useEffect(() => {
-    console.log('we called useEffect');
     localStorage.setItem('expenses', JSON.stringify(expenses))
   }, [expenses]);
 
