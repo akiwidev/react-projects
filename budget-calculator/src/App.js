@@ -78,7 +78,7 @@ function App() {
           handleAmount={handleAmount}
           handleCharge={handleCharge}
           handleSubmit={handleSubmit} />
-        <ExpenseList expenses={expenses}/>
+        <ExpenseList expenses={expenses} handleDelete={handleDelete} handleEdit={handleEdit} clearItems={clearItems} />
       </main>
       <h1>
         Total Spending: <span className='total'>$ {expenses.reduce((accumulator, current) => {
